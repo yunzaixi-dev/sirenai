@@ -12,6 +12,6 @@ SirenAI是[SillyTavern](https://github.com/SillyTavern/SillyTavern)的一个分�
 [SirenAI](https://discord.gg/mBD77vwUCB)
 
 ## 感谢
-[我自己](https://zaixi.dev)
-[类脑](https://discord.gg/bNmEB4SK9h)
-[似人](https://discord.gg/f6VfJU86SQ)
+- [我自己](https://zaixi.dev)
+- [类脑](https://discord.gg/bNmEB4SK9h)
+- [似人](https://discord.gg/f6VfJU86SQ)
