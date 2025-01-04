@@ -25,7 +25,7 @@ SirenAI 是 [SillyTavern](https://github.com/SillyTavern/SillyTavern) 的一个�
 
 ## 加入我们
 
-欢迎访问我们的 [GitHub 仓库](https://github.com/yunzai-bot/sirenai)，参与项目开发！
+欢迎访问我们的 [GitHub 仓库](https://github.com/yunzaixi-dev/sirenai)，参与项目开发！
 
 以及我们的开发社区[SirenAI](https://discord.gg/mBD77vwUCB)
 
