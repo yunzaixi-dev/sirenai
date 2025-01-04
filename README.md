@@ -2,7 +2,7 @@
 ⚠️ 这个项目正在积极开发中,目前只有文件夹
 
 ## 介绍
-SirenAI是[SillyTavern](https://github.com/SillyTavern/SillyTavern)的一个分支,同样遵守原SillyTavern的AGPL-3.0协议,成立本项目是为了服务
+SirenAI是[SillyTavern](https://github.com/SillyTavern/SillyTavern)的一个分支,同样遵守AGPL-3.0协议,成立本项目是为了服务
 - [类脑](https://discord.gg/bNmEB4SK9h)(一个中文AI角色卡开源社区)
 - [似人](https://discord.gg/f6VfJU86SQ)(另一个中文AI角色卡开源社区,这也是本项目名字由来)
 
