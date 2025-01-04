@@ -2,10 +2,9 @@
 ⚠️ 这个项目正在积极开发中,目前只有文件夹
 
 ## 介绍
-SirenAI是[SillyTavern](https://github.com/SillyTavern/SillyTavern)的一个分支,同样遵守原SillyTavern的AGPL-3.0协议,本项目专为
+SirenAI是[SillyTavern](https://github.com/SillyTavern/SillyTavern)的一个分支,同样遵守原SillyTavern的AGPL-3.0协议,成立本项目是为了服务
 - [类脑](https://discord.gg/bNmEB4SK9h)(一个中文AI角色卡社区)
 - [似人](https://discord.gg/f6VfJU86SQ)(另一个中文AI角色卡社区)
-建立.
 
 本项目基于Flutter框架对酒馆进行100%重构,将酒馆的云端运算逻辑移至端侧,大幅提升性能,大幅提升用户体验,大幅提升安全性,同时尽可能确保兼容性.
 目前正在积极开发中,敬请期待.
