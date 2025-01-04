@@ -1,5 +1,5 @@
 # SirenAI
-⚠️ 这个项目正在积极开发中,目前只有大饼
+⚠️ 这个项目正在积极开发中,目前只有文件夹
 
 ## 介绍
 SirenAI是[SillyTavern](https://github.com/SillyTavern/SillyTavern)的一个分支,同样遵守原SillyTavern的AGPL-3.0协议,本项目专为
