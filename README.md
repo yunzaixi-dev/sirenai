@@ -6,7 +6,7 @@
 
 ## 项目介绍
 
-文档 [wiki](https://sirenai.org)
+文档 [wiki](https://docs.sirenai.org)
 文档仓库 [github](https://github.com/yunzaixi-dev/sirenai-docs)
 
 SirenAI 是 [SillyTavern](https://github.com/SillyTavern/SillyTavern) 的一个开源分支项目，遵循 AGPL-3.0 协议。本项目的成立旨在更好地服务于：
