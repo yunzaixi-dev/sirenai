@@ -65,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Theme.of(context).colorScheme.primaryContainer.withOpacity(0.35),
+                  Theme.of(context).colorScheme.primaryContainer.withOpacity(0.618),
                   Theme.of(context).colorScheme.surface,
                 ],
                 stops: const [0.0, 1],
@@ -76,10 +76,10 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Image.asset(
                   'assets/images/logo-v8.png',
-                  width: 64,
-                  height: 64,
+                  width: 100,
+                  height: 100,
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 4),
                 Text(
                   'SirenAI',
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
