@@ -1,0 +1,7 @@
+{
+    "appTitle": "SirenAI",
+    "welcome": "欢迎使用 SirenAI",
+    "@welcome": {
+        "description": "首页显示的欢迎消息"
+    }
+}

@@ -30,21 +30,29 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.8
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+  # Flutter UI
+  cupertino_icons: any
+  # Flutter Bloc+ Get_It
+  flutter_bloc: any
+  equatable: any
+  get_it: any
+  # we use objectbox as our local database,support vector data.
+  objectbox: any
+  dio: any
+  json_annotation: any
+  # we use clerk as our authentication manager (remark:clerk is in test version at the moment)
+  # but clerk does not support windows,linux yet, so I cut it
+  # clerk_flutter: any
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-  flutter_lints: ^5.0.0
+  flutter_lints: any
+  build_runner: any
+  json_serializable: any
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
