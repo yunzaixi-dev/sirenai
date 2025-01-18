@@ -3,36 +3,26 @@
     <g transform="translate(60,80) rotate(45)">
         <rect width="40" height="40" x="-20" y="-20" 
               fill="#4285F4" 
-              stroke="#E8EAED" 
-              stroke-width="1.5"
               rx="8" ry="8"/>
     </g>
     <g transform="translate(100,80) rotate(45)">
         <rect width="40" height="40" x="-20" y="-20"
               fill="#DB4437"
-              stroke="#E8EAED"
-              stroke-width="1.5"
               rx="8" ry="8"/>
     </g>
     <g transform="translate(140,80) rotate(45)">
         <rect width="40" height="40" x="-20" y="-20"
               fill="#F4B400"
-              stroke="#E8EAED"
-              stroke-width="1.5"
               rx="8" ry="8"/>
     </g>
     <g transform="translate(80,120) rotate(45)">
         <rect width="40" height="40" x="-20" y="-20"
               fill="#0F9D58"
-              stroke="#E8EAED"
-              stroke-width="1.5"
               rx="8" ry="8"/>
     </g>
     <g transform="translate(120,120) rotate(45)">
         <rect width="40" height="40" x="-20" y="-20"
               fill="#DB4437"
-              stroke="#E8EAED"
-              stroke-width="1.5"
               rx="8" ry="8"/>
     </g>
 </svg>
