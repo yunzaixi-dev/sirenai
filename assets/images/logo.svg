@@ -1,0 +1,33 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <rect width="200" height="200" fill="#FFFFFF"/>
+    <g transform="translate(60,80) rotate(45)">
+        <rect width="40" height="40" x="-20" y="-20" 
+              fill="#4285F4" 
+              stroke="#E8EAED" 
+              stroke-width="1.5"/>
+    </g>
+    <g transform="translate(100,80) rotate(45)">
+        <rect width="40" height="40" x="-20" y="-20"
+              fill="#DB4437"
+              stroke="#E8EAED"
+              stroke-width="1.5"/>
+    </g>
+    <g transform="translate(140,80) rotate(45)">
+        <rect width="40" height="40" x="-20" y="-20"
+              fill="#F4B400"
+              stroke="#E8EAED"
+              stroke-width="1.5"/>
+    </g>
+    <g transform="translate(80,120) rotate(45)">
+        <rect width="40" height="40" x="-20" y="-20"
+              fill="#0F9D58"
+              stroke="#E8EAED"
+              stroke-width="1.5"/>
+    </g>
+    <g transform="translate(120,120) rotate(45)">
+        <rect width="40" height="40" x="-20" y="-20"
+              fill="#DB4437"
+              stroke="#E8EAED"
+              stroke-width="1.5"/>
+    </g>
+</svg>
