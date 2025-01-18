@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+    <!-- 白色背景方形 -->
+    <rect width="1024" height="1024" fill="white"/>
+    
+    <!-- 紫罗兰色长方形主体 (黄金比例约1:1.618) -->
+    <rect x="262" y="176" width="500" height="672" rx="40" ry="40" fill="#2C3333"/>
+    
+    <!-- 浅紫色折线装饰 -->
+    <path
+        d="M 262 562 L 412 462 L 512 562 L 762 412"
+        stroke="#E7F6F2"
+        stroke-width="84"
+        fill="none"
+        stroke-linejoin="round"
+        stroke-linecap="round"
+        clip-path="url(#rectClip)"
+    />
+
+    <!-- 裁剪路径确保折线不会超出长方形边界 -->
+    <defs>
+        <clipPath id="rectClip">
+            <rect x="262" y="176" width="500" height="672" rx="40" ry="40"/>
+        </clipPath>
+    </defs>
+</svg>
