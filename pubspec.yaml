@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  provider: any
   intl: any
   # Flutter UI
   cupertino_icons: any
@@ -43,7 +44,8 @@ dependencies:
   objectbox: any
   dio: any
   json_annotation: any
-  flutter_launcher_icons: ^0.14.3
+  flutter_launcher_icons: any
+  flutter_svg: any
   # we use clerk as our authentication manager (remark:clerk is in test version at the moment)
   # but clerk does not support windows,linux yet, so I cut it
   # clerk_flutter: any
@@ -60,15 +62,14 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
+  generate: true
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/logo.svg
+    - assets/images/
+  # To add assets to your application, add an assets section, like this:
+  # assets:
+  #   - assets/images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

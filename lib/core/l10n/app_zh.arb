@@ -1,0 +1,11 @@
+{
+  "appName": "SirenAI",
+  "email": "邮箱",
+  "verificationCode": "验证码",
+  "send": "发送",
+  "login": "登录",
+  "endToEndEncryption": "SirenAI 支持端对端加密",
+  "notRobot": "我不是AI",
+  "slogan": "开源，隐私优先的LLM前端",
+  "offlineLogin": "离线模式"
+}

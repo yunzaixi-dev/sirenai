@@ -1,0 +1,11 @@
+{
+  "appName": "SirenAI",
+  "email": "Email",
+  "verificationCode": "Verification Code",
+  "send": "Send",
+  "login": "Login",
+  "endToEndEncryption": "End-to-End Encryption",
+  "notRobot": "I'm not a AI",
+  "slogan": "Open Source, Privacy-First LLM Frontend",
+  "offlineLogin": "Offline Mode"
+}
