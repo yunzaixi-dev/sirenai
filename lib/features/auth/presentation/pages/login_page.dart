@@ -32,13 +32,13 @@ class _LoginPageState extends State<LoginPage> {
 
   void _login() {
     if (!_validateInputs()) return;
-    
+
     setState(() {
       _isLoading = true;
     });
-    
+
     // TODO: Implement login logic
-    
+
     Future.delayed(const Duration(seconds: 2), () {
       setState(() {
         _isLoading = false;
@@ -69,161 +69,152 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Theme.of(context).brightness == Brightness.light 
-            ? Brightness.dark 
-            : Brightness.light,
-        statusBarBrightness: Theme.of(context).brightness,
-        systemNavigationBarColor: Theme.of(context).scaffoldBackgroundColor,
-        systemNavigationBarIconBrightness: Theme.of(context).brightness == Brightness.light 
-            ? Brightness.dark 
-            : Brightness.light,
-      ),
-      child: Scaffold(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        body: AuthContainer(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                kIsWeb 
-                    ? 'SirenAI for Web'
-                    : Platform.isAndroid
-                        ? 'SirenAI for Android'
-                        : Platform.isIOS
-                            ? 'SirenAI for iOS'
-                            : Platform.isWindows
-                                ? 'SirenAI for Windows'
-                                : Platform.isMacOS
-                                    ? 'SirenAI for macOS'
-                                    : Platform.isLinux
-                                        ? 'SirenAI for Linux'
-                                        : 'SirenAI',
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                  fontWeight: FontWeight.bold,
-                ),
+    return Scaffold(
+      body: AuthContainer(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              kIsWeb
+                  ? 'SirenAI for Web'
+                  : Platform.isAndroid
+                      ? 'SirenAI for Android'
+                      : Platform.isIOS
+                          ? 'SirenAI for iOS'
+                          : Platform.isWindows
+                              ? 'SirenAI for Windows'
+                              : Platform.isMacOS
+                                  ? 'SirenAI for macOS'
+                                  : Platform.isLinux
+                                      ? 'SirenAI for Linux'
+                                      : 'SirenAI',
+              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              AppLocalizations.of(context)!.slogan,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color:
+                        Theme.of(context).colorScheme.primary.withOpacity(0.8),
+                    fontWeight: FontWeight.bold,
+                  ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 32),
+            // Offline login button
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Theme.of(context)
+                    .colorScheme
+                    .secondaryContainer
+                    .withOpacity(0.5),
+                borderRadius: BorderRadius.circular(12),
               ),
-              const SizedBox(height: 8),
-              Text(
-                AppLocalizations.of(context)!.slogan,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.8),
-                  fontWeight: FontWeight.bold,
+              child: OutlinedButton.icon(
+                onPressed: () {
+                  // TODO: Implement offline login
+                },
+                icon: Icon(
+                  Icons.offline_bolt_outlined,
+                  color: Theme.of(context).colorScheme.onSecondaryContainer,
                 ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 32),
-              // Offline login button
-              Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.secondaryContainer.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: OutlinedButton.icon(
-                  onPressed: () {
-                    // TODO: Implement offline login
-                  },
-                  icon: Icon(
-                    Icons.offline_bolt_outlined,
+                label: Text(
+                  AppLocalizations.of(context)!.offlineLogin,
+                  style: TextStyle(
                     color: Theme.of(context).colorScheme.onSecondaryContainer,
-                  ),
-                  label: Text(
-                    AppLocalizations.of(context)!.offlineLogin,
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onSecondaryContainer,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                    side: BorderSide.none,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    backgroundColor: Colors.transparent,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
-              ),
-              const SizedBox(height: 24),
-              AuthTextField(
-                controller: _emailController,
-                labelText: AppLocalizations.of(context)!.email,
-                prefixIcon: Icons.email_outlined,
-                keyboardType: TextInputType.emailAddress,
-                textInputAction: TextInputAction.next,
-                enabled: !_isLoading,
-              ),
-              const SizedBox(height: 16),
-              AuthTextField(
-                controller: _passwordController,
-                labelText: AppLocalizations.of(context)!.password,
-                prefixIcon: Icons.lock_outline,
-                obscureText: _obscurePassword,
-                textInputAction: TextInputAction.done,
-                enabled: !_isLoading,
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                style: OutlinedButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  side: BorderSide.none,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                  onPressed: () {
-                    setState(() {
-                      _obscurePassword = !_obscurePassword;
-                    });
-                  },
+                  backgroundColor: Colors.transparent,
                 ),
               ),
-              const SizedBox(height: 8),
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
+            ),
+            const SizedBox(height: 24),
+            AuthTextField(
+              controller: _emailController,
+              labelText: AppLocalizations.of(context)!.email,
+              prefixIcon: Icons.email_outlined,
+              keyboardType: TextInputType.emailAddress,
+              textInputAction: TextInputAction.next,
+              enabled: !_isLoading,
+            ),
+            const SizedBox(height: 16),
+            AuthTextField(
+              controller: _passwordController,
+              labelText: AppLocalizations.of(context)!.password,
+              prefixIcon: Icons.lock_outline,
+              obscureText: _obscurePassword,
+              textInputAction: TextInputAction.done,
+              enabled: !_isLoading,
+              suffixIcon: IconButton(
+                icon: Icon(
+                  _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _obscurePassword = !_obscurePassword;
+                  });
+                },
+              ),
+            ),
+            const SizedBox(height: 8),
+            Align(
+              alignment: Alignment.centerRight,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ResetPasswordPage(),
+                    ),
+                  );
+                },
+                child: Text(AppLocalizations.of(context)!.forgotPassword),
+              ),
+            ),
+            const SizedBox(height: 24),
+            AuthButton(
+              onPressed: _isLoading ? null : _login,
+              child: _isLoading
+                  ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                      ),
+                    )
+                  : Text(AppLocalizations.of(context)!.login),
+            ),
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(AppLocalizations.of(context)!.noAccount),
+                TextButton(
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const ResetPasswordPage(),
+                        builder: (context) => const RegisterPage(),
                       ),
                     );
                   },
-                  child: Text(AppLocalizations.of(context)!.forgotPassword),
+                  child: Text(AppLocalizations.of(context)!.registerNow),
                 ),
-              ),
-              const SizedBox(height: 24),
-              AuthButton(
-                onPressed: _isLoading ? null : _login,
-                child: _isLoading
-                    ? const SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                        ),
-                      )
-                    : Text(AppLocalizations.of(context)!.login),
-              ),
-              const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(AppLocalizations.of(context)!.noAccount),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const RegisterPage(),
-                        ),
-                      );
-                    },
-                    child: Text(AppLocalizations.of(context)!.registerNow),
-                  ),
-                ],
-              ),
-            ],
-          ),
+              ],
+            ),
+          ],
         ),
       ),
     );
