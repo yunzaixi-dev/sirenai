@@ -1,62 +1,51 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:sirenai/core/providers/theme_provider.dart';
 import 'package:sirenai/core/providers/locale_provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:sirenai/features/auth/presentation/pages/register_page.dart';
-import 'package:sirenai/features/auth/presentation/pages/reset_password_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class ResetPasswordPage extends StatefulWidget {
+  const ResetPasswordPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<ResetPasswordPage> createState() => _ResetPasswordPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _ResetPasswordPageState extends State<ResetPasswordPage> {
   final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
   bool _isLoading = false;
-  bool _obscurePassword = true;
 
   @override
   void dispose() {
     _emailController.dispose();
-    _passwordController.dispose();
     super.dispose();
   }
 
-  void _login() {
+  void _resetPassword() {
     if (!_validateInputs()) return;
     
     setState(() {
       _isLoading = true;
     });
     
-    // TODO: Implement login logic
+    // TODO: Implement password reset logic
     
     Future.delayed(const Duration(seconds: 2), () {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(AppLocalizations.of(context)!.passwordResetSent)),
+      );
       setState(() {
         _isLoading = false;
       });
+      Navigator.pop(context);
     });
   }
 
   bool _validateInputs() {
     final email = _emailController.text.trim();
-    final password = _passwordController.text;
-
     if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email)) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(AppLocalizations.of(context)!.invalidEmail)),
-      );
-      return false;
-    }
-
-    if (password.length < 8) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(AppLocalizations.of(context)!.invalidPassword)),
       );
       return false;
     }
@@ -66,13 +55,10 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-    final isSmallScreen = screenSize.width < 600;
-    final loginWidth = isSmallScreen 
-        ? screenSize.width * 0.9
-        : min(screenSize.width * 0.8, 400.0);
-
     return Scaffold(
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.resetPassword),
+      ),
       body: Center(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
@@ -115,117 +101,20 @@ class _LoginPageState extends State<LoginPage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  AppLocalizations.of(context)!.slogan,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.primary.withOpacity(0.8),
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
                 const SizedBox(height: 32),
-                // Offline login button
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.secondaryContainer,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: Theme.of(context).colorScheme.secondary.withOpacity(0.3),
-                    ),
-                  ),
-                  child: OutlinedButton.icon(
-                    onPressed: () {
-                      // TODO: Implement offline login
-                    },
-                    icon: Icon(
-                      Icons.offline_bolt_outlined,
-                      color: Theme.of(context).colorScheme.onSecondaryContainer,
-                    ),
-                    label: Text(
-                      AppLocalizations.of(context)!.offlineLogin,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.onSecondaryContainer,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    style: OutlinedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                      side: BorderSide.none,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 24),
                 // Email field
-                Container(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: Theme.of(context).colorScheme.outline.withOpacity(0.1),
+                TextField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    labelText: AppLocalizations.of(context)!.email,
+                    prefixIcon: const Icon(Icons.email_outlined),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                  ),
-                  child: TextField(
-                    controller: _emailController,
-                    decoration: InputDecoration(
-                      labelText: AppLocalizations.of(context)!.email,
-                      prefixIcon: const Icon(Icons.email_outlined),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      filled: true,
-                      fillColor: Colors.transparent,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                // Password field
-                Container(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: Theme.of(context).colorScheme.outline.withOpacity(0.1),
-                    ),
-                  ),
-                  child: TextField(
-                    controller: _passwordController,
-                    obscureText: _obscurePassword,
-                    decoration: InputDecoration(
-                      labelText: AppLocalizations.of(context)!.password,
-                      prefixIcon: const Icon(Icons.lock_outline),
-                      suffixIcon: IconButton(
-                        icon: Icon(_obscurePassword ? Icons.visibility : Icons.visibility_off),
-                        onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      filled: true,
-                      fillColor: Colors.transparent,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 8),
-                // Forgot password link
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const ResetPasswordPage()),
-                      );
-                    },
-                    child: Text(AppLocalizations.of(context)!.forgotPassword),
                   ),
                 ),
                 const SizedBox(height: 24),
-                // Login button
+                // Reset Password button
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -245,7 +134,7 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   child: FilledButton(
-                    onPressed: _isLoading ? null : _login,
+                    onPressed: _isLoading ? null : _resetPassword,
                     style: FilledButton.styleFrom(
                       padding: const EdgeInsets.all(16),
                       backgroundColor: Colors.transparent,
@@ -261,25 +150,8 @@ class _LoginPageState extends State<LoginPage> {
                               strokeWidth: 2,
                             ),
                           )
-                        : Text(AppLocalizations.of(context)!.login),
+                        : Text(AppLocalizations.of(context)!.resetPassword),
                   ),
-                ),
-                const SizedBox(height: 16),
-                // Register link
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(AppLocalizations.of(context)!.noAccount),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const RegisterPage()),
-                        );
-                      },
-                      child: Text(AppLocalizations.of(context)!.registerNow),
-                    ),
-                  ],
                 ),
                 const SizedBox(height: 24),
                 // Bottom section with security info and settings

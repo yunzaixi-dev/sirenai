@@ -1,11 +1,23 @@
 {
   "appName": "SirenAI",
   "email": "邮箱",
+  "password": "密码",
+  "confirmPassword": "确认密码",
   "verificationCode": "验证码",
   "send": "发送",
   "login": "登录",
-  "endToEndEncryption": "SirenAI 支持端对端加密",
-  "notRobot": "我不是AI",
-  "slogan": "开源，隐私优先的LLM前端",
-  "offlineLogin": "离线模式"
+  "register": "注册",
+  "forgotPassword": "忘记密码？",
+  "resetPassword": "重置密码",
+  "endToEndEncryption": "端到端加密",
+  "slogan": "开源、隐私优先的 LLM 前端",
+  "offlineLogin": "离线模式",
+  "noAccount": "还没有账号？",
+  "alreadyHaveAccount": "已有账号？",
+  "registerNow": "立即注册",
+  "loginNow": "立即登录",
+  "passwordMismatch": "两次输入的密码不一致",
+  "passwordResetSent": "密码重置链接已发送至您的邮箱",
+  "invalidEmail": "请输入有效的邮箱地址",
+  "invalidPassword": "密码长度至少为8位"
 }

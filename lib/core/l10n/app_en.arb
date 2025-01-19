@@ -1,11 +1,23 @@
 {
   "appName": "SirenAI",
   "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm Password",
   "verificationCode": "Verification Code",
   "send": "Send",
   "login": "Login",
+  "register": "Register",
+  "forgotPassword": "Forgot Password?",
+  "resetPassword": "Reset Password",
   "endToEndEncryption": "End-to-End Encryption",
-  "notRobot": "I'm not an AI",
   "slogan": "Open Source, Privacy-First LLM Frontend",
-  "offlineLogin": "Offline Mode"
+  "offlineLogin": "Offline Mode",
+  "noAccount": "Don't have an account?",
+  "alreadyHaveAccount": "Already have an account?",
+  "registerNow": "Register Now",
+  "loginNow": "Login Now",
+  "passwordMismatch": "Passwords do not match",
+  "passwordResetSent": "Password reset link sent to your email",
+  "invalidEmail": "Please enter a valid email",
+  "invalidPassword": "Password must be at least 8 characters"
 }
