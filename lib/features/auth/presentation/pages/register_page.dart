@@ -3,6 +3,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:sirenai/core/providers/theme_provider.dart';
 import 'package:sirenai/core/providers/locale_provider.dart';
+import 'dart:io';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -144,7 +146,19 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'SirenAI',
+                  kIsWeb 
+                      ? 'SirenAI for Web'
+                      : Platform.isAndroid
+                          ? 'SirenAI for Android'
+                          : Platform.isIOS
+                              ? 'SirenAI for iOS'
+                              : Platform.isWindows
+                                  ? 'SirenAI for Windows'
+                                  : Platform.isMacOS
+                                      ? 'SirenAI for macOS'
+                                      : Platform.isLinux
+                                          ? 'SirenAI for Linux'
+                                          : 'SirenAI',
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.bold,

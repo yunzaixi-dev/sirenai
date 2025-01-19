@@ -6,6 +6,8 @@ import 'package:sirenai/core/providers/locale_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sirenai/features/auth/presentation/pages/register_page.dart';
 import 'package:sirenai/features/auth/presentation/pages/reset_password_page.dart';
+import 'dart:io';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -109,7 +111,19 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'SirenAI',
+                  kIsWeb 
+                      ? 'SirenAI for Web'
+                      : Platform.isAndroid
+                          ? 'SirenAI for Android'
+                          : Platform.isIOS
+                              ? 'SirenAI for iOS'
+                              : Platform.isWindows
+                                  ? 'SirenAI for Windows'
+                                  : Platform.isMacOS
+                                      ? 'SirenAI for macOS'
+                                      : Platform.isLinux
+                                          ? 'SirenAI for Linux'
+                                          : 'SirenAI',
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.bold,
