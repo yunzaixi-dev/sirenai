@@ -107,11 +107,8 @@ class _LoginPageState extends State<LoginPage> {
             Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.secondaryContainer,
+                color: Theme.of(context).colorScheme.secondaryContainer.withOpacity(0.5),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: Theme.of(context).colorScheme.secondary.withOpacity(0.3),
-                ),
               ),
               child: OutlinedButton.icon(
                 onPressed: () {
@@ -127,6 +124,14 @@ class _LoginPageState extends State<LoginPage> {
                     color: Theme.of(context).colorScheme.onSecondaryContainer,
                     fontWeight: FontWeight.w500,
                   ),
+                ),
+                style: OutlinedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  side: BorderSide.none,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  backgroundColor: Colors.transparent,
                 ),
               ),
             ),
