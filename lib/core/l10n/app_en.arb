@@ -19,5 +19,10 @@
   "passwordMismatch": "Passwords do not match",
   "passwordResetSent": "Password reset link sent to your email",
   "invalidEmail": "Please enter a valid email",
-  "invalidPassword": "Password must be at least 8 characters"
+  "invalidPassword": "Password must be at least 8 characters",
+  "sendCode": "Send Code",
+  "verificationCodeSent": "Verification code sent",
+  "verificationCodeRequired": "Please enter verification code",
+  "newPassword": "New Password",
+  "passwordResetSuccess": "Password reset successfully"
 }
