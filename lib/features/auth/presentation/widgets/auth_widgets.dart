@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:sirenai/core/providers/theme_provider.dart';
 import 'package:sirenai/core/providers/locale_provider.dart';
@@ -16,57 +17,70 @@ class AuthContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Container(
-          constraints: const BoxConstraints(maxWidth: 400),
-          padding: const EdgeInsets.all(24),
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surface,
-            borderRadius: BorderRadius.circular(24),
-            boxShadow: [
-              BoxShadow(
-                color: Theme.of(context).colorScheme.shadow.withOpacity(0.05),
-                blurRadius: 16,
-                offset: const Offset(0, 4),
-              ),
-            ],
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(bottom: 32),
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Theme.of(context).colorScheme.primaryContainer.withOpacity(0.5),
-                      Theme.of(context).colorScheme.surface,
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Theme.of(context).brightness == Brightness.light 
+            ? Brightness.dark 
+            : Brightness.light,
+        statusBarBrightness: Theme.of(context).brightness,
+        systemNavigationBarColor: Theme.of(context).scaffoldBackgroundColor,
+        systemNavigationBarIconBrightness: Theme.of(context).brightness == Brightness.light 
+            ? Brightness.dark 
+            : Brightness.light,
+      ),
+      child: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16),
+          child: Container(
+            constraints: const BoxConstraints(maxWidth: 400),
+            padding: const EdgeInsets.all(24),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface,
+              borderRadius: BorderRadius.circular(24),
+              boxShadow: [
+                BoxShadow(
+                  color: Theme.of(context).colorScheme.shadow.withOpacity(0.05),
+                  blurRadius: 16,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(bottom: 32),
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Theme.of(context).colorScheme.primaryContainer.withOpacity(0.5),
+                        Theme.of(context).colorScheme.surface,
+                      ],
+                      stops: const [0.0, 1],
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'assets/images/logo-v8.png',
+                        width: 100,
+                        height: 100,
+                      ),
+                      const SizedBox(height: 4),
+                      if (showAppBar) const SizedBox(height: 16),
                     ],
-                    stops: const [0.0, 1],
                   ),
                 ),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      'assets/images/logo-v8.png',
-                      width: 100,
-                      height: 100,
-                    ),
-                    const SizedBox(height: 4),
-                    if (showAppBar) const SizedBox(height: 16),
-                  ],
-                ),
-              ),
-              child,
-              const SizedBox(height: 24),
-              const AuthBottomSection(),
-            ],
+                child,
+                const SizedBox(height: 24),
+                const AuthBottomSection(),
+              ],
+            ),
           ),
         ),
       ),

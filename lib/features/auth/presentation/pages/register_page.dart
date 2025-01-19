@@ -110,134 +110,150 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.register),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Theme.of(context).brightness == Brightness.light 
+            ? Brightness.dark 
+            : Brightness.light,
+        statusBarBrightness: Theme.of(context).brightness,
+        systemNavigationBarColor: Theme.of(context).scaffoldBackgroundColor,
+        systemNavigationBarIconBrightness: Theme.of(context).brightness == Brightness.light 
+            ? Brightness.dark 
+            : Brightness.light,
       ),
-      body: AuthContainer(
-        showAppBar: true,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              kIsWeb 
-                  ? 'SirenAI for Web'
-                  : Platform.isAndroid
-                      ? 'SirenAI for Android'
-                      : Platform.isIOS
-                          ? 'SirenAI for iOS'
-                          : Platform.isWindows
-                              ? 'SirenAI for Windows'
-                              : Platform.isMacOS
-                                  ? 'SirenAI for macOS'
-                                  : Platform.isLinux
-                                      ? 'SirenAI for Linux'
-                                      : 'SirenAI',
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-                fontWeight: FontWeight.bold,
+      child: Scaffold(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: Text(AppLocalizations.of(context)!.register),
+        ),
+        body: AuthContainer(
+          showAppBar: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                kIsWeb 
+                    ? 'SirenAI for Web'
+                    : Platform.isAndroid
+                        ? 'SirenAI for Android'
+                        : Platform.isIOS
+                            ? 'SirenAI for iOS'
+                            : Platform.isWindows
+                                ? 'SirenAI for Windows'
+                                : Platform.isMacOS
+                                    ? 'SirenAI for macOS'
+                                    : Platform.isLinux
+                                        ? 'SirenAI for Linux'
+                                        : 'SirenAI',
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            const SizedBox(height: 32),
-            AuthTextField(
-              controller: _emailController,
-              labelText: AppLocalizations.of(context)!.email,
-              prefixIcon: Icons.email_outlined,
-              keyboardType: TextInputType.emailAddress,
-              textInputAction: TextInputAction.next,
-              enabled: !_isLoading,
-              suffixIcon: _isSendingCode
-                  ? const SizedBox(
-                      width: 20,
-                      height: 20,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                      ),
-                    )
-                  : TextButton(
-                      onPressed: _sendVerificationCode,
-                      child: Text(
-                        AppLocalizations.of(context)!.sendCode,
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
+              const SizedBox(height: 32),
+              AuthTextField(
+                controller: _emailController,
+                labelText: AppLocalizations.of(context)!.email,
+                prefixIcon: Icons.email_outlined,
+                keyboardType: TextInputType.emailAddress,
+                textInputAction: TextInputAction.next,
+                enabled: !_isLoading,
+                suffixIcon: _isSendingCode
+                    ? const SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                        ),
+                      )
+                    : TextButton(
+                        onPressed: _sendVerificationCode,
+                        child: Text(
+                          AppLocalizations.of(context)!.sendCode,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
                         ),
                       ),
-                    ),
-            ),
-            const SizedBox(height: 16),
-            AuthTextField(
-              controller: _verificationCodeController,
-              labelText: AppLocalizations.of(context)!.verificationCode,
-              prefixIcon: Icons.lock_clock_outlined,
-              keyboardType: TextInputType.number,
-              textInputAction: TextInputAction.next,
-              enabled: !_isLoading,
-            ),
-            const SizedBox(height: 16),
-            AuthTextField(
-              controller: _passwordController,
-              labelText: AppLocalizations.of(context)!.password,
-              prefixIcon: Icons.lock_outline,
-              obscureText: _obscurePassword,
-              textInputAction: TextInputAction.next,
-              enabled: !_isLoading,
-              suffixIcon: IconButton(
-                icon: Icon(
-                  _obscurePassword ? Icons.visibility_off : Icons.visibility,
-                ),
-                onPressed: () {
-                  setState(() {
-                    _obscurePassword = !_obscurePassword;
-                  });
-                },
               ),
-            ),
-            const SizedBox(height: 16),
-            AuthTextField(
-              controller: _confirmPasswordController,
-              labelText: AppLocalizations.of(context)!.confirmPassword,
-              prefixIcon: Icons.lock_outline,
-              obscureText: _obscureConfirmPassword,
-              textInputAction: TextInputAction.done,
-              enabled: !_isLoading,
-              suffixIcon: IconButton(
-                icon: Icon(
-                  _obscureConfirmPassword ? Icons.visibility_off : Icons.visibility,
-                ),
-                onPressed: () {
-                  setState(() {
-                    _obscureConfirmPassword = !_obscureConfirmPassword;
-                  });
-                },
+              const SizedBox(height: 16),
+              AuthTextField(
+                controller: _verificationCodeController,
+                labelText: AppLocalizations.of(context)!.verificationCode,
+                prefixIcon: Icons.lock_clock_outlined,
+                keyboardType: TextInputType.number,
+                textInputAction: TextInputAction.next,
+                enabled: !_isLoading,
               ),
-            ),
-            const SizedBox(height: 24),
-            AuthButton(
-              onPressed: _isLoading ? null : _register,
-              child: _isLoading
-                  ? const SizedBox(
-                      width: 20,
-                      height: 20,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                      ),
-                    )
-                  : Text(AppLocalizations.of(context)!.register),
-            ),
-            const SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(AppLocalizations.of(context)!.alreadyHaveAccount),
-                TextButton(
+              const SizedBox(height: 16),
+              AuthTextField(
+                controller: _passwordController,
+                labelText: AppLocalizations.of(context)!.password,
+                prefixIcon: Icons.lock_outline,
+                obscureText: _obscurePassword,
+                textInputAction: TextInputAction.next,
+                enabled: !_isLoading,
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                  ),
                   onPressed: () {
-                    Navigator.pop(context);
+                    setState(() {
+                      _obscurePassword = !_obscurePassword;
+                    });
                   },
-                  child: Text(AppLocalizations.of(context)!.loginNow),
                 ),
-              ],
-            ),
-          ],
+              ),
+              const SizedBox(height: 16),
+              AuthTextField(
+                controller: _confirmPasswordController,
+                labelText: AppLocalizations.of(context)!.confirmPassword,
+                prefixIcon: Icons.lock_outline,
+                obscureText: _obscureConfirmPassword,
+                textInputAction: TextInputAction.done,
+                enabled: !_isLoading,
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _obscureConfirmPassword ? Icons.visibility_off : Icons.visibility,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _obscureConfirmPassword = !_obscureConfirmPassword;
+                    });
+                  },
+                ),
+              ),
+              const SizedBox(height: 24),
+              AuthButton(
+                onPressed: _isLoading ? null : _register,
+                child: _isLoading
+                    ? const SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                        ),
+                      )
+                    : Text(AppLocalizations.of(context)!.register),
+              ),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(AppLocalizations.of(context)!.alreadyHaveAccount),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(AppLocalizations.of(context)!.loginNow),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
