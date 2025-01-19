@@ -1,7 +1,0 @@
-{
-    "appTitle": "SirenAI",
-    "welcome": "Welcome to SirenAI",
-    "@welcome": {
-        "description": "The welcome message displayed on the home screen"
-    }
-}
