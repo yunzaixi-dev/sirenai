@@ -19,5 +19,10 @@
   "passwordMismatch": "两次输入的密码不一致",
   "passwordResetSent": "密码重置链接已发送至您的邮箱",
   "invalidEmail": "请输入有效的邮箱地址",
-  "invalidPassword": "密码长度至少为8位"
+  "invalidPassword": "密码长度至少为8位",
+  "sendCode": "发送验证码",
+  "verificationCodeSent": "验证码已发送",
+  "verificationCodeRequired": "请输入验证码",
+  "newPassword": "新密码",
+  "passwordResetSuccess": "密码重置成功"
 }
