@@ -175,54 +175,45 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 24),
                 // Email field
-                Container(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: Theme.of(context).colorScheme.outline.withOpacity(0.1),
+                TextField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    labelText: AppLocalizations.of(context)!.email,
+                    prefixIcon: const Icon(Icons.email_outlined),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
+                    filled: false,
                   ),
-                  child: TextField(
-                    controller: _emailController,
-                    decoration: InputDecoration(
-                      labelText: AppLocalizations.of(context)!.email,
-                      prefixIcon: const Icon(Icons.email_outlined),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      filled: true,
-                      fillColor: Colors.transparent,
-                    ),
-                  ),
+                  keyboardType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
+                  enabled: !_isLoading,
                 ),
                 const SizedBox(height: 16),
                 // Password field
-                Container(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: Theme.of(context).colorScheme.outline.withOpacity(0.1),
+                TextField(
+                  controller: _passwordController,
+                  decoration: InputDecoration(
+                    labelText: AppLocalizations.of(context)!.password,
+                    prefixIcon: const Icon(Icons.lock_outline),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    filled: false,
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscurePassword = !_obscurePassword;
+                        });
+                      },
                     ),
                   ),
-                  child: TextField(
-                    controller: _passwordController,
-                    obscureText: _obscurePassword,
-                    decoration: InputDecoration(
-                      labelText: AppLocalizations.of(context)!.password,
-                      prefixIcon: const Icon(Icons.lock_outline),
-                      suffixIcon: IconButton(
-                        icon: Icon(_obscurePassword ? Icons.visibility : Icons.visibility_off),
-                        onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      filled: true,
-                      fillColor: Colors.transparent,
-                    ),
-                  ),
+                  obscureText: _obscurePassword,
+                  textInputAction: TextInputAction.done,
+                  enabled: !_isLoading,
                 ),
                 const SizedBox(height: 8),
                 // Forgot password link
